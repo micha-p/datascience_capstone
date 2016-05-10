@@ -31,7 +31,7 @@ modeldataOHE <- modeldata %>%
              mutate_each(funs(replace(., which(is.na(.)), 0)))
 
 modeldataALL <- modeldata %>% 
-             select(-lon,-lat) %>%
+             select(-lon,-lat,-otherspart) %>%
              select(building,ID,label,factor,group,everything()) %>%
              left_join(one_hot,by=c("building")) %>% 
              mutate_each(funs(replace(., which(is.na(.)), 0)))
@@ -112,7 +112,7 @@ imp %>% arrange(desc(MeanDecreaseAccuracy))
 
 par(bg='white')
 randomForest::varImpPlot(MODEL)
-dev.print(device=png,filename ="maps/importance.png",width=150,height=150,units="mm", res=300, type = "cairo")
+dev.print(device=png,filename ="maps/importance.png",width=300,units="mm", res=300, type = "cairo")
 
 PRED <- predict(MODEL,test, type="response")
 accuracyVALUE(test$factor,PRED)

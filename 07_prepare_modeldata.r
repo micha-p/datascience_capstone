@@ -86,10 +86,6 @@ incidents <- violationsR %>%
              rodents=sum(rodents),
              maintenance=sum(maintenance),
              others=sum(other),
-             FineAmt=sum(FineAmt),
-             AdminFee=sum(AdminFee),
-             LateFee=sum(LateFee),
-             StateFee=sum(StateFee),
              CleanUpCost=sum(CleanUpCost),
              JudgmentAmt=sum(JudgmentAmt))
              

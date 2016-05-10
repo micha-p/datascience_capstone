@@ -206,22 +206,23 @@ Some models fail, as counts of calls and crimes are poor predictors, but general
 
 ```
 LinearRegression
-label ~ count   					accuracy: 0.75941339675
-label ~ count + keywords   				accuracy: 0.759809750297
+label ~ count   							accuracy: 0.75941339675
+label ~ count + keywords   					accuracy: 0.759809750297
 
 LogisticRegression (WRONG USAGE SO FAR!)
-label ~ count   					accuracy: 0.575137686861
-label ~ count + keywords   				accuracy: 0.609756097561
-label ~ count + callcount + crimecount   		accuracy: 0.621557828482
+label ~ count   							accuracy: 0.575137686861
+label ~ count + keywords   					accuracy: 0.609756097561
+label ~ count + callcount + crimecount   	accuracy: 0.621557828482
 
 LinearDiscriminantAnalysis
-label ~ count   					accuracy: 0.57513768686073963
-label ~ count + callcount + crimecount   		accuracy: 0.75735590487706572
+label ~ count   							accuracy: 0.57513768686073963
+label ~ count + callcount + crimecount   	accuracy: 0.75735590487706572
+
 RandomForestClassifier
-label ~ count   					accuracy: 0.57758968158000801
-label ~ count + keywords	   			accuracy: 0.7574316290130797
-label ~ count + callcount + crimecount   		accuracy: 0.75822433610780815
-label ~ all counts + all keywords   			accuracy: 0.7546571541815299
+label ~ count   							accuracy: 0.57758968158000801
+label ~ count + keywords	   				accuracy: 0.7574316290130797
+label ~ count + callcount + crimecount   	accuracy: 0.75822433610780815
+label ~ all counts + all keywords   		accuracy: 0.7546571541815299
 ```
 
 Compared to R and depending on experience. It seems more difficult to use these prediction methods correctly. Moreover, data handling was easier to understand in R using the pipelining  syntax of package dplyr compared to method chaining in python, 
@@ -238,9 +239,61 @@ e1071::svm      0.7578168
 xgboost::xgb    0.7562388
 ```
 
-### Importance of features
+### Final prediction model and Importance of features
 
-Unfinished work, sorry
+```
+Call:
+ randomForest(formula = factor ~ ., data = train, ntree = 100,      importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 100
+No. of variables tried at each split: 5
+
+        OOB estimate of  error rate: 24.49%
+Confusion matrix:
+     0    1 class.error
+0 4599  532   0.1036835
+1 1974 3126   0.3870588
+```
+
+
+![importance](maps/importance.png)
+
+```
+   MeanDecreaseAccuracy                                    feature
+1            11.1049547                       NO.PAYMENT.ON.RECORD
+2             7.3218649                                JudgmentAmt
+3             6.8520266                                   AdminFee
+4             6.8504877                                    vehicle
+5             6.6439320                                   StateFee
+6             6.4600053                                    LateFee
+7             6.1807799                                    FineAmt
+8             6.0536165                                      count
+9             5.9607387                                     others
+10            5.6655689                                 otherspart
+11            4.8923257                                      waste
+12            3.6116380                                   graffiti
+13            3.5760504                   Responsible.By.Admission
+14            3.4536619                           PENDING.JUDGMENT
+15            3.3618392                         NO.PAYMENT.APPLIED
+16            3.1967213                     Responsible.By.Default
+17            3.1901008          Not.responsible.By.City.Dismissal
+18            2.8771494                               PAID.IN.FULL
+19            2.5597032               Not.responsible.By.Dismissal
+20            2.2147489               Responsible.By.Determination
+21            1.5770781           Not.responsible.By.Determination
+22            1.4285346                                CleanUpCost
+23            1.3473471                                 crimecount
+24            0.9514461                                  defective
+25            0.6956935                                  callcount
+26            0.6906121                                    rodents
+27            0.4994397 Responsible..Fine.Waived..By.Determination
+28            0.3544524                                maintenance
+29            0.0000000                                     debris
+30            0.0000000   Responsible.By.Responsible..Fine.Waived.
+31            0.0000000     Responsible..Fine.Waived..By.Admission
+32           -2.5499745                       PARTIAL.PAYMENT.MADE
+```
+
 
 
 # DISCUSSION
