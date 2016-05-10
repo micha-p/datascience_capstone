@@ -97,18 +97,13 @@ toc()
 
 set.seed(817)
 
+
+#no need fro cross validation in random forests!!!
 g<-1
 data <- factorALL
 test    <- data %>% filter(group==g) %>% select(-group)
 train   <- data %>% filter(group!=g) %>% select(-group)
-MODEL <- randomForest::randomForest(factor~., data=train,
-      ntree=500,
-      mtry=1,
-      importance=TRUE,
-      na.action=randomForest::na.roughfix,
-      replace=FALSE)
-PRED <- predict(MODEL,test, type="response")
-accuracyVALUE(test$factor,PRED)
+MODEL <- randomForest::randomForest(factor~., data=train,ntree=100,importance=TRUE)
 randomForest::importance(MODEL, type = 1)
 
 imp <- as.data.frame(randomForest::importance(MODEL, type = 1))
@@ -118,3 +113,6 @@ imp %>% arrange(desc(MeanDecreaseAccuracy))
 par(bg='white')
 randomForest::varImpPlot(MODEL)
 dev.print(device=png,filename ="maps/importance.png",width=150,height=150,units="mm", res=300, type = "cairo")
+
+PRED <- predict(MODEL,test, type="response")
+accuracyVALUE(test$factor,PRED)
