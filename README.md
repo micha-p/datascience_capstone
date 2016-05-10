@@ -1,11 +1,11 @@
-# Predicting blight buildings (R,dplyr,ggmap,tree,randomForest,rpart,party,svm,xgboost) 
+Predicting blight buildings (R,dplyr,ggmap,tree,randomForest,rpart,party,e1071/svm,xgboost) 
 
 # Summary
 
-Method does not matter with this data size and feature set
-Accuracy was around 0.76 for almost all models, even such contratsing like logistic regressions and random forests. So there is still a need for more features.
-False positve rate almost zero, false negative rate much higher. This might result from pending desicions about any demolitions.
-Though there are violations, calls and crimes in the city center, these huge buildings were obviously not removed. Filtering these buildings might improve prediction.
+- Method does not matter with this data size and feature set
+- Accuracy was around 0.76 for almost all models, even such contratsing like logistic regressions and random forests. So there is still a need for more features.
+- False positve rate almost zero, false negative rate much higher. This might result from pending desicions about any demolitions.
+- Though there are violations, calls and crimes in the city center, these huge buildings were obviously not removed. Filtering these buildings might improve prediction.
 
 # INTRODUCTION
 ### Preface
