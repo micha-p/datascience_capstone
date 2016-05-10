@@ -1,4 +1,4 @@
-Predicting blight buildings (R,dplyr,ggmap,tree,randomForest,rpart,party,svm,xgboost) 
+# Predicting blight buildings (R,dplyr,ggmap,tree,randomForest,rpart,party,svm,xgboost) 
 
 # Summary
 
@@ -16,7 +16,7 @@ Unfortunately this course started during very busy weeks. So my submission is so
 Predict blight status using  data about demolition permits, violations, calls on 311 and crimes.
 
 ![combined](maps/combined.png "green=calls blue=violations red=permits orange=crimes")
-
+*green=calls blue=violations red=permits orange=crimes*
 
 # MATERIALS AND METHODS
 
@@ -69,7 +69,7 @@ Accuracy  Threshold AOC
 Accuracies do not differ that much. The simple count of total violations per building always performed best.
 
 ![comparison](maps/comparison.png "Linear and logistic regression and decision tree compared to observed frequencies")
-
+*Linear and logistic regression and decision tree compared to observed frequencies*
 
 ### Performance Comparisons
 
@@ -141,10 +141,18 @@ Logistic regression 'glm', decision tree 'ctree' and 'xgobust' were therefore go
 
 ### Counts of violations, crimes, calls
 
-![violations](maps/density_violations.png "Density of violations")
 ![permits](maps/density_permits.png "Density of permits")
-![calls](maps/density_calls.png "Density of violations")
-![crimes](maps/density_crimes.png "Density of violations")
+*Density of permits*
+
+![violations](maps/density_violations.png "Density of violations")
+*Density of violations*
+
+![calls](maps/density_calls.png "Density of calls")
+*Density of calls*
+
+![crimes](maps/density_crimes.png "Density of crimes")
+*Density of crimes*
+
 
 
 There is a huge discrepancy around the center of the city in counts on violations and demolition permits.
