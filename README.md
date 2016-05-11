@@ -248,58 +248,53 @@ Call:
                      Number of trees: 100
 No. of variables tried at each split: 5
 
-        OOB estimate of  error rate: 24.49%
+        OOB estimate of  error rate: 24.34%
 Confusion matrix:
      0    1 class.error
-0 4599  532   0.1036835
-1 1974 3126   0.3870588
+0 4727  404  0.07873709
+1 2086 3014  0.40901961
 ```
 
 
 ![importance](maps/importance.png)
 
+
 ```
    MeanDecreaseAccuracy                                    feature
-1            11.1049547                       NO.PAYMENT.ON.RECORD
-2             7.3218649                                JudgmentAmt
-3             6.8520266                                   AdminFee
-4             6.8504877                                    vehicle
-5             6.6439320                                   StateFee
-6             6.4600053                                    LateFee
-7             6.1807799                                    FineAmt
-8             6.0536165                                      count
-9             5.9607387                                     others
-10            5.6655689                                 otherspart
-11            4.8923257                                      waste
-12            3.6116380                                   graffiti
-13            3.5760504                   Responsible.By.Admission
-14            3.4536619                           PENDING.JUDGMENT
-15            3.3618392                         NO.PAYMENT.APPLIED
-16            3.1967213                     Responsible.By.Default
-17            3.1901008          Not.responsible.By.City.Dismissal
-18            2.8771494                               PAID.IN.FULL
-19            2.5597032               Not.responsible.By.Dismissal
-20            2.2147489               Responsible.By.Determination
-21            1.5770781           Not.responsible.By.Determination
-22            1.4285346                                CleanUpCost
-23            1.3473471                                 crimecount
-24            0.9514461                                  defective
-25            0.6956935                                  callcount
-26            0.6906121                                    rodents
-27            0.4994397 Responsible..Fine.Waived..By.Determination
-28            0.3544524                                maintenance
-29            0.0000000                                     debris
-30            0.0000000   Responsible.By.Responsible..Fine.Waived.
-31            0.0000000     Responsible..Fine.Waived..By.Admission
-32           -2.5499745                       PARTIAL.PAYMENT.MADE
+1            12.0174616                                      count
+2            11.7058503                       NO.PAYMENT.ON.RECORD
+3            10.6998760                                JudgmentAmt
+4             8.1419668                                     others
+5             7.3097141                                      waste
+6             6.8462156                               PAID.IN.FULL
+7             6.2611452                     Responsible.By.Default
+8             6.1565691                                    vehicle
+9             5.5171036                         NO.PAYMENT.APPLIED
+10            5.2577122                   Responsible.By.Admission
+11            4.9252647           Not.responsible.By.Determination
+12            4.6820547                           PENDING.JUDGMENT
+13            4.6627133                                   graffiti
+14            4.6404937               Not.responsible.By.Dismissal
+15            4.4204598                                maintenance
+16            4.0326192          Not.responsible.By.City.Dismissal
+17            3.4506889               Responsible.By.Determination
+18            2.5242087                                    rodents
+19            1.7888312                       PARTIAL.PAYMENT.MADE
+20            1.4285608                                CleanUpCost
+21            0.0000000                                     debris
+22            0.0000000   Responsible.By.Responsible..Fine.Waived.
+23            0.0000000     Responsible..Fine.Waived..By.Admission
+24           -0.1984569                                  defective
+25           -1.3370381 Responsible..Fine.Waived..By.Determination
 ```
+
 
 
 
 # DISCUSSION
 
 
-During data refinement and feature extraction, the choice of methos is not important. All models predict around 0.76. So focus should be on performance and easy of use. logistic regression and ctree might be a good recommendation.
+During data refinement and feature extraction, the choice of method is not important. All models predict around 0.76. So focus should be on performance and easy of use. logistic regression and ctree might be a good recommendation.
 A typical confusion matrix for some test dataset during cross validation is:
 
 ```

@@ -22,7 +22,6 @@ write.csv(one_hot, file="data/one_hot.csv", row.names = FALSE)
 
 
 ##############################################################
-# here is a mistake
 # column vector otherspart and all amounts expcept judgment amount should be dropped!
 
 modeldataOHE <- modeldata %>% 
@@ -31,7 +30,7 @@ modeldataOHE <- modeldata %>%
              mutate_each(funs(replace(., which(is.na(.)), 0)))
 
 modeldataALL <- modeldata %>% 
-             select(-lon,-lat,-otherspart) %>%
+             select(-lon,-lat) %>%
              select(building,ID,label,factor,group,everything()) %>%
              left_join(one_hot,by=c("building")) %>% 
              mutate_each(funs(replace(., which(is.na(.)), 0)))
@@ -105,6 +104,7 @@ test    <- data %>% filter(group==g) %>% select(-group)
 train   <- data %>% filter(group!=g) %>% select(-group)
 MODEL <- randomForest::randomForest(factor~., data=train,ntree=100,importance=TRUE)
 randomForest::importance(MODEL, type = 1)
+print(MODEL)
 
 imp <- as.data.frame(randomForest::importance(MODEL, type = 1))
 imp$feature <- rownames(imp)
